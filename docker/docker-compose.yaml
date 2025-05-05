@@ -60,10 +60,17 @@ x-default-isaac-lab-volumes: &default-isaac-lab-volumes
   - type: volume
     source: isaac-lab-data
     target: ${DOCKER_ISAACLAB_PATH}/data_storage
+  # Mount host Nucleus assets for container access
+  - type: bind
+    source: ${NUCLEUS_ASSET_ROOT_DIR}
+    target: ${DOCKER_NUCLEUS_ASSET_ROOT_DIR}
+    read_only: true
 
 x-default-isaac-lab-environment: &default-isaac-lab-environment
   - ISAACSIM_PATH=${DOCKER_ISAACLAB_PATH}/_isaac_sim
   - OMNI_KIT_ALLOW_ROOT=1
+  # Override Nucleus asset root directory
+  - NUCLEUS_ASSET_ROOT_DIR=${DOCKER_NUCLEUS_ASSET_ROOT_DIR}
 
 x-default-isaac-lab-deploy: &default-isaac-lab-deploy
   resources:
