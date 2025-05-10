@@ -29,6 +29,9 @@ class RslRlPpoActorCriticCfg:
     init_noise_std: float = MISSING
     """The initial noise standard deviation for the policy."""
 
+    min_policy_std: float = MISSING
+    """The minimum policy standard deviation for the policy."""
+
     noise_std_type: Literal["scalar", "log"] = "scalar"
     """The type of noise standard deviation for the policy. Default is scalar."""
 
